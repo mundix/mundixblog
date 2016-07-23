@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
             format: { with: VALID_EMAIL_REGEX }
 
   has_many :comments
-
+  has_secure_password
 end
 
 
