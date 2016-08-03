@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
 
       session[:user_id] = user.id
       flash[:success] = "Bienvenido #{user.username}"
-      redirect_to users_path(user)
+      redirect_to user_path(user)
     else
       flash.now[:danger] = "Al parecer hay algun inconveniente con sus credenciales."
       render "new"
@@ -23,7 +23,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-
+    session[:user_id] = nil
+    flash[:success] = 'Usted se ha deslogueado'
+    redirect_to root_path
   end
 
 end
