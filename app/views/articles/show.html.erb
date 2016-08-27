@@ -29,6 +29,7 @@
     </div>
   </ul>
       <% end %>
+  <% if logged_in? && current_user == @article.user %>
   <div class="article-actions">
     <%= link_to 'Editar',edit_article_path(@article), class: 'btn btn-xs btn-primary' %>
     <%= link_to 'Delete', article_path(@article),
@@ -37,5 +38,5 @@
                 class: 'btn btn-xs btn-danger' %>
     <%= link_to 'Ver todos los articulos',articles_path, class: 'btn btn-xs btn-success' %>
   </div>
-
+  <% end %>
 </div>

@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
 
       session[:user_id] = user.id
-      flash[:success] = "Bienvenido #{user.username}"
+      flash[:success] = "Bienvenid@ #{user.username}"
       redirect_to user_path(user)
     else
       flash.now[:danger] = "Al parecer hay algun inconveniente con sus credenciales."
