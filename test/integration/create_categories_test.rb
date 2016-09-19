@@ -14,4 +14,19 @@ class CreateCategoriesTest < ActionDispatch::IntegrationTest
     # Esto se debe desplegar en el page que queremos
     assert_match 'sports', response.body # <- ene l body
   end
+
+  test "invalid category submission results in failure" do
+    get new_category_path
+    assert_template 'categories/new'
+    # En este escenario no queiro un cambio
+    assert_no_difference 'Category.count' do
+      post categories_path, category: {name: ' '}
+    #   Si fails simplemente render el new tempalte otra ves
+    end
+    assert_template 'categories/new'
+    assert_select 'h2.panel-title'
+    assert_select 'div.panel-body'
+  #   Estoy buscando la existencia de esas dos cosas
+  #   Si estas dos cosas se presentas estoy probando que se esta renderisando
+  end
 end
