@@ -9,6 +9,9 @@
   </h4>
   <hr>
   <%= simple_format(@article.description) %>
+  <% if @article.categories.any? %>
+    <p>Categories: <%= render @article.categories %></p>
+  <% end %>
   <% if @article.user %>
   <ul class="listing">
     <div class="row">

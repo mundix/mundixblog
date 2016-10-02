@@ -61,7 +61,8 @@ class ArticlesController < ApplicationController
   end
 
   def article_param
-    params.require(:article).permit(:title, :description)
+    # con el category_ids: [] quiere decir que viene en forma de array  
+    params.require(:article).permit(:title, :description, category_ids: [])
   end
 
   def require_same_user
